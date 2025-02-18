@@ -1,0 +1,20 @@
+<div class="dialog-container">
+    <h2 mat-dialog-title>Edit User</h2>
+    <mat-dialog-content>
+      <form [formGroup]="form">
+        <ng-container *ngFor="let column of data.displayedColumns">
+          <div *ngIf="column !== 'actions'">
+            <mat-form-field style="width: 100%;">
+              <mat-label>{{ column | uppercase }}</mat-label>
+              <input matInput [formControlName]="column" />
+            </mat-form-field>
+          </div>
+        </ng-container>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid">Update</button>
+      <button mat-button color="warn" mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+  </div>
+  

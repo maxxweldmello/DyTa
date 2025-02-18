@@ -1,0 +1,23 @@
+<mat-card class="nested-data-card">
+  <mat-card-header>
+    <mat-card-title><strong>{{ title | uppercase }}</strong></mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <ng-container *ngFor="let key of objectKeys(nestedData)">
+      <p>
+        <strong>{{ key | titlecase }}:</strong>
+        <span *ngIf="!isObject(nestedData[key]); else nestedContent">
+          {{ nestedData[key] }}
+        </span>
+      </p>
+
+      <ng-template #nestedContent>
+        <app-user-view-nested
+          [title]="key"
+          [nestedData]="nestedData[key]"
+        ></app-user-view-nested>
+      </ng-template>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

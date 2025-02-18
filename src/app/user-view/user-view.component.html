@@ -1,0 +1,42 @@
+<div *ngIf="user" class="user-card-container">
+  <div>
+    <mat-card class="user-card">
+      <mat-card-header>
+        <mat-card-title>USER DETAILS</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <h2><strong>USER DATA</strong></h2>
+        <p><strong>ID:</strong> {{ user.id }}</p>
+        <p><strong>First Name:</strong> {{ user.firstName }}</p>
+        <p><strong>Maiden Name:</strong> {{ user.maidenName || 'NOT FOUND' }}</p>
+        <p><strong>Last Name:</strong> {{ user.lastName }}</p>
+        <p><strong>Age:</strong> {{ user.age }}</p>
+        <p><strong>Gender:</strong> {{ user.gender }}</p>
+        <p><strong>Phone:</strong> {{ user.phone }}</p>
+      </mat-card-content>
+      <br>
+      <mat-card-content>
+        <h2><strong>ADDITIONAL DATA</strong></h2>
+        <p><strong>Image:</strong><br><img [src]="user.image" width="50px" /></p>
+        <p><strong>Blood Group:</strong> {{ user.bloodGroup }}</p>
+        <p><strong>Height:</strong> {{ user.height }}</p>
+        <p><strong>Weight:</strong> {{ user.weight }}</p>
+        <p><strong>Eye Color:</strong> {{ user.eyeColor }}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <app-user-view-nested [title]="'Bank Information'" [nestedData]="user.bank"></app-user-view-nested>
+    </mat-card>
+
+    <mat-card>
+      <app-user-view-nested [title]="'Address Information'" [nestedData]="user.address"></app-user-view-nested>
+    </mat-card>
+
+    <mat-card>
+      <app-user-view-nested [title]="'Company Information'" [nestedData]="user.company"></app-user-view-nested>
+    </mat-card>
+
+  </div>
+</div>
